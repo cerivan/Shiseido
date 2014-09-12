@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html lang='fr'>
+<head>
+	<meta charset='utf-8' />
+	<meta name='description' content='' />
+	<meta name='author' content='Jean-Philippe MIOT @lemonid' />
+	<meta name='keywords' content='' />
+
+	<title>Restaubook</title>
+
+	<meta name='viewport' content='width=device-width,initial-scale=1' />
+
+	<link href='media/img/icon.jpg' rel='icon' />
+	<link href='private/css/reset.css' rel='stylesheet' media="all" />
+
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.css" />
+	<script src="http://cdn.leafletjs.com/leaflet-0.7.2/leaflet.js"></script>
+
+	<link href='private/css/sprites.css' rel='stylesheet' media="all" />
+	<link href='private/css/style.css' rel='stylesheet' media="all" />
+	<script src='private/js/jquery/jquery.js'></script>
+	<script src='private/js/jquery/jquery.mobile.custom.js'></script>
+	<script src='private/js/jquery/jquery.ui.custom.js'></script>
+
+	<script src='private/js/data.js'></script>
+	<script src='private/js/rb.inc.js'></script>
+	<script src='private/js/setup.js'></script>
+	<script src='private/js/main.js'></script>
+	
+	<script src='private/js/phone/user.js'></script>
+	<script src='private/js/phone/main.js'></script>
+
+</head>
+
+<body>
+	<div id="app" data-current-page="main" data-viewer-type="map" data-card-type="none" data-card-open="false" data-user-card="false" data-state="normal">
+		<div id="menu_page" class="page">
+			<a href="#" id="menu_lat_trigger">Menu</a>
+			<div id="menu_lat" class="menu_inner">
+				<nav>
+					<ul>
+						<li id="menu_01"><a href="#"><p>Filtres</p></a>
+							<ul>
+								<li id="menu_01_title"><a href="#"><p>Filtres</p></a></li>
+								<li id="menu_01_01" data-type="slider" data-active="false"><span>Cercles de confiance</span><div id="circles_slider"></div></li>
+								<li id="menu_01_02" data-type="slider" data-active="false"><span>Prix</span><div id="price_slider"></div></li>
+								<li id="menu_01_03" data-type="slider" data-active="false"><span>Statuts</span><div id="status_slider"></div></li>
+								<li id="menu_01_04"><span>Restaurants affichés :</span><p></p></li>
+								<li id="menu_01_05" class="checkbox_item"><label for="activeSrcLocals">Locals</label><input id="activeSrcLocals" type="checkbox"></li>
+							</ul>
+						</li>
+						<li id="menu_02" class="panel_tag" data-panel-type="search"><a href="#"><p>Tags</p></a>
+							<ul>
+								<li id="menu_02_title"><a href="#"><p>Mes tags</p></a></li>
+								<section class="vflip">
+									<li id="menu_02_01f" class="input_item" data-front><input type="search" id="menu_tags_autocomplete" class="tags_autocomplete" placeholder="Recherche de tag..."><a href="#" class="category_trigger trigger"></a></li>
+									<li id="menu_02_01b" data-type="select" data-back>
+										<select name="menu_categories_tag" id="menu_categories_tag" class="categories_tag">
+											<option value="asia">Asie</option>
+											<option value="europe">Europe</option>
+											<option value="africa">Afrique</option>
+											<option value="america">Amérique</option>
+											<option value="service">Service</option>
+											<option value="payment">Paiement</option>
+											<option value="comfort">Confort</option>
+											<option value="admission">Admission</option>
+											<option value="car">Voiture</option>
+										</select>
+										<a href="#" class="search_trigger trigger"></a></li>
+								</section>
+								<ul id="menu_suggested_tags" class="suggested_tags">
+									<span class="custom_title"></span>
+									<li class="custom_tag"></li>
+									<span class="title"></span>
+								</ul>
+								<span class="sp_double_sens"></span>
+								<ul id="menu_selected_tags" class="selected_tags">
+									<span class="title"></span>
+								</ul>
+							</ul>
+						</li>
+						<li id="menu_03"><a href="#"><p>Abonnements</p></a>
+							<ul>
+								<li id="menu_03_title"><a href="#"><p>Abonnements</p></a></li>
+								<li id="menu_03_01" class="input_item"><input id="followingsSearch" type="search" placeholder="Rechercher..."><a href="#" class="sp_add trigger"></a></li>
+								<div class="separator">
+									<div class="vertical_bar"><li class="active">A</li><li>B</li><li>C</li><li>D</li><li>E</li><li>F</li><li>G</li><li>H</li><li>I</li><li>J</li><li>K</li><li>L</li><li class="highlight">M</li><li>N</li><li class="highlight">O</li><li>P</li><li>Q</li><li>R</li><li>S</li><li>T</li><li>U</li><li>V</li><li>W</li><li>X</li><li>Y</li><li>Z</li></div>
+									<div id="menu_followings">
+										<li data-userid="userid_01" data-type="user_follow"><p>Nom user<span>userid</span></p><a href="#"><p>Follow</p></a></li>
+										<li data-userid="userid_02" data-type="user_invite"><p>Nom user<span>userid</span></p><a href="#"><p>Invite</p></a></li>
+										<li data-userid="userid_03" data-type="user_unfollow"><p>Nom user<span>userid</span></p><a href="#"><p>Unfollow</p></a></li>
+										<li data-userid="userid_04" data-type="user_invited"><p>Nom user<span>userid</span></p><a href="#"><p>Invited</p></a></li>
+										<li data-userid="userid_05" data-type="user_follow"><p>Nom user<span>userid</span></p><a href="#"><p>Follow</p></a></li>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+						</li>
+						<li id="menu_04"><a href="#"><p>Abonnés</p></a>
+							<ul>
+								<li id="menu_04_title"><a href="#"><p>Abonnés</p></a></li>
+								<li id="menu_04_01" class="input_item"><input id="followersSearch" type="search" placeholder="Rechercher..."><a href="#" class="sp_add"></a></li>
+								<div class="separator">
+									<div class="vertical_bar"><li class="active">A</li><li>B</li><li>C</li><li>D</li><li>E</li><li>F</li><li>G</li><li>H</li><li>I</li><li>J</li><li>K</li><li>L</li><li class="highlight">M</li><li>N</li><li class="highlight">O</li><li>P</li><li>Q</li><li>R</li><li>S</li><li>T</li><li>U</li><li>V</li><li>W</li><li>X</li><li>Y</li><li>Z</li></div>
+									<div id="menu_followers">
+										<section class="flip">
+											<li data-userid="userid_01" data-front data-select="user_manage"><p>Nom user<span>userid</span></p><a href="#"><p>Manage</p></a></li>
+											<li data-back><a href="#" data-action="remove"><p>Remove</p></a><a href="#" data-action="block"><p>Block</p></a><a href="#" data-action="cancel"><p>Cancel</p></a></li>
+										</section>
+										<section class="flip">
+											<li data-userid="userid_02" data-front data-select="user_manage"><p>Nom user<span>userid</span></p><a href="#"><p>Manage</p></a></li>
+											<li data-back><a href="#" data-action="remove"><p>Remove</p></a><a href="#" data-action="block"><p>Block</p></a><a href="#" data-action="cancel"><p>Cancel</p></a></li>
+										</section>
+										<section class="flip">
+											<li data-userid="userid_03" data-front data-select="user_manage"><p>Nom user<span>userid</span></p><a href="#"><p>Manage</p></a></li>
+											<li data-back><a href="#" data-action="remove"><p>Remove</p></a><a href="#" data-action="block"><p>Block</p></a><a href="#" data-action="cancel"><p>Cancel</p></a></li>
+										</section>
+										<section class="flip">
+											<li data-userid="userid_04" data-front data-select="user_respond"><p>Nom user<span>userid</span></p><a href="#"><p>Respond</p></a></li>
+											<li data-back><a href="#" data-action="accept_follow"><p>Accept & Follow</p></a><a href="#" data-action="ignore"><p>Ignore</p></a><a href="#" data-action="cancel"><p>Cancel</p></a></li>
+										</section>
+									</div>
+									<div class="clearfix"></div>
+								</div>
+							</ul>
+						</li>
+						<li id="menu_05"><a href="#"><p>Zones stockées</p></a>
+							<ul>
+								<li id="menu_05_title"><a href="#"><p>Zones stockées</p></a></li>
+								<section class="flip">
+									<li id="menu_05_01f" data-front data-type="save"><p>Sauvegarder zone actuelle</p><a href="#"></a></li>
+									<li id="menu_05_01b" data-back class="input_item"><input id="setZoneName" type="text" placeholder="Nom de la zone..."><a href="#"></a></li>
+								</section>
+								<h3 class="separator">Mes zones</h3>
+								<div id="zones_saved">
+									<section class="flip">
+										<li id="menu_05_02f" data-front data-select="zone_modify"><p>Ma zone 1</p><a href="#"></a></li>
+										<li id="menu_05_02b" data-back><a href="#" data-action="refresh"></a><a href="#" data-action="rename"></a><a href="#" data-action="delete"></a></li>
+									</section>
+									<section class="flip">
+										<li id="menu_05_03f" data-front data-select="zone_modify"><p>Ma zone 2</p><a href="#"></a></li>
+										<li id="menu_05_03b" data-back><a href="#" data-action="refresh"></a><a href="#" data-action="rename"></a><a href="#" data-action="delete"></a></li>
+									</section>
+									<section class="flip">
+										<li id="menu_05_04f" data-front data-select="zone_modify"><p>Ma zone 3</p><a href="#"></a></li>
+										<li id="menu_05_04b" data-back><a href="#" data-action="refresh"></a><a href="#" data-action="rename"></a><a href="#" data-action="delete"></a></li>
+									</section>
+									<section class="flip">
+										<li id="menu_05_05f" data-front data-select="zone_modify"><p>Ma zone 4</p><a href="#"></a></li>
+										<li id="menu_05_05b" data-back><a href="#" data-action="refresh"></a><a href="#" data-action="rename"></a><a href="#" data-action="delete"></a></li>
+									</section>
+								</div>
+							</ul>
+						</li>
+						<li id="menu_06"><a href="#"><p>Paramètres</p></a>
+							<ul>
+								<li id="menu_06_title"><a href="#"><p>Paramètres</p></a></li>
+								<section class="flip">
+									<li id="menu_06_01f" data-front data-type="modify"><p><span>Nom</span></p><a href="#"></a></li>
+									<li id="menu_06_01b" data-back class="input_item"><input id="userFirstname" type="text" placeholder="Prénom"><input id="userLastname" type="text" placeholder="Nom"><a href="#"></a></li>
+								</section>
+								<section class="flip">
+									<li id="menu_06_02f" data-front data-type="modify"><p><span>Téléphone</span></p><a href="#"></a></li>
+									<li id="menu_06_02b" data-back class="input_item"><input id="userPhoneCountry" type="text" placeholder="+33"><input id="userPhone" type="text" placeholder="Téléphone"><a href="#"></a></li>
+								</section>
+								<section class="flip">
+									<li id="menu_06_03f" data-front data-type="modify"><p><span>eMail</span></p><a href="#"></a></li>
+									<li id="menu_06_03b" data-back class="input_item"><input id="userMail" type="text" placeholder="mail@exemple.com"><a href="#"></a></li>
+								</section>
+								<li id="menu_06_04" class="checkbox_item"><label for="userAllowFollowings">Approuver abonnements</label><input id="userAllowFollowings" type="checkbox"></li>
+								<li id="menu_06_05" data-type="select"><p>Visibilité par défaut de mes évaluations</p>
+									<select name="userPrivacy" id="userPrivacy">
+										<option value="public">Everyone</option>
+										<option value="network">My network</option>
+										<option value="private">Only me</option>
+									</select>
+								</li>
+								<li id="menu_06_05" class="escape"><a href="#"><p>Supprimer mon compte</p></a></li>
+							</ul>
+						</li>
+						<li id="menu_07"><a href="#"><p>À propos</p></a>
+							<ul>
+								<li id="menu_07_title"><a href="#"><p>À propos</p></a></li>
+								<li id="menu_07_01"><a href="#"><p>FAQ</p></a>
+									<ul>
+										<li id="menu_07_01_title"><a href="#">FAQ</a></li>
+										<li data-type="show-faq_01"><a href="#"><p>Question 01</p></a></li>
+										<li data-type="mask-faq_01"><p class="answer">Réponse 01</p></li>
+										<li data-type="show-faq_02"><a href="#"><p>Question 02</p></a></li>
+										<li data-type="mask-faq_02"><p class="answer">Réponse 02</p></li>
+										<li data-type="show-faq_03"><a href="#"><p>Question 03</p></a></li>
+										<li data-type="mask-faq_03"><p class="answer">Réponse 03</p></li>
+									</ul>
+								</li>
+								<li data-type="link"><p>Suggérer une nouvelle fonctionnalité</p><a href="#" target="_blank"></a></li>
+								<li data-type="link"><p>Reporter un problème</p><a href="#" target="_blank"></a></li>
+								<li data-type="link"><p>Noter l'application</p><a href="#" target="_blank"></a></li>
+								<li data-type="link"><p>Information légale / Protection des données</p><a href="#" target="_blank"></a></li>
+								<li><a href="#" id="menu_07_06"><p>Version</p></a>
+									<ul>
+										<li><a href="#" id="menu_07_06_title"><p>Version</p></a></li>
+										<p>Version 0.8.5<br>BDD version 4.2.2<br>Version 0.8.5<br>BDD version 4.2.2<br>Version 0.8.5<br>BDD version 4.2.2</p>
+									</ul>
+								</li>
+							</ul>
+						</li>
+					</ul>
+					<div class="notifications">
+						<p>Notifications</p>
+						<ul class="list">
+							<li>Contact is now using RB</li>
+							<li>Follower notifcations</li>
+							<li>Recommandations</li>
+							<li>Suggest users [similar taste]</li>
+						</ul>
+					</div>
+				</nav>
+			</div>
+		</div>
+		<div id="main_page" class="page">
+			<div id="interface">
+	 			<div id="searchbar"><input type="search"></div>
+	 			<div id="viewer_options"></div>
+			</div>
+			<div id="viewer">
+				<div id="mapView"></div>
+				<div id="pictureView"></div>
+				<div id="listView"></div>
+			</div>
+			<div id="card" data-state="close" data-modbar-active="false" data-blacklist="false">
+				<div class="border_head"></div>
+
+				<header>
+					<a id="phone" href=""><img src="media/svg/sp_phone.png" alt=""></a>
+					<h2></h2>
+					<p></p>
+					<nav id="card_tabs">
+						<a href="#" id="tab_me">me</a><!--
+					 --><a href="#" id="tab_network">my network</a><!--
+					 --><a href="#" id="tab_user">user</a><!--
+				 --></nav>
+				</header>
+
+				<section id="card_body">
+					<header>
+						<div id="main_pictos">
+							<div class="pstatus sp1"><div></div><p></p></div><!--
+						 --><div class="pappeal sp1"><div></div><p></p></div><!--
+						 --><div class="pprice sp1"><div></div><p></p></div><!--
+						 --><div class="ptime sp1"><div></div><p></p></div><!--
+					 --></div>
+						<div id="modbar" data-mod-type="empty">
+							<section class="pstatus">
+								<header>
+									<p><span><em>Select your </em>Status : </span>Praesent interdum, ipsum sit amet sollicitudin placerat</p>
+								</header>
+							</section>
+							<section class="pappeal">
+								<header>
+									<p><span><em>Select your </em>Appeal : </span>Main highlight</p>
+								</header>
+							</section>
+							<section class="pprice">
+								<header>
+									<p><span><em>Select your </em>Price : </span>Relative price to neighboors </p>
+								</header>
+							</section>
+							<section class="ptime">
+								<header>
+									<p><span><em>Select your </em>Time : </span>How long are you willing to travel to get here ?</p>
+								</header>
+							</section>
+						</div>
+					</header>
+
+					<section id="section_container">
+						<section id="Sphotos" data-section-type="photo">
+							<div data-front class="front nopadding">
+								<header>
+									<h5></h5>
+								</header>
+								<div class="content"></div>
+							</div>
+						</section>
+
+						<section id="Stags" data-section-type="list">
+							<div data-front class="front">
+								<header>
+									<h5></h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content"></div>
+							</div>
+							<div data-back class="back">
+								<header>
+									<h5></h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content">
+									<input type="search" id="section_tags_autocomplete" class="tags_autocomplete" placeholder="Recherche de tag...">
+									<ul id="section_suggested_tags" class="suggested_tags">
+										<span class="custom_title"></span>
+										<li class="custom_tag"></li>
+										<span class="title"></span>
+									</ul>
+									<span class="sp_double_sens"></span>
+									<ul id="section_selected_tags" class="selected_tags">
+										<span class="title">Selected tags</span>
+									</ul>
+								</div>
+							</div>
+						</section>
+
+						<section id="Stips" data-section-type="text">
+							<div data-front class="front">
+								<header>
+									<h5></h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content"></div>
+							</div>
+							<div data-back class="back nopadding">
+								<header>
+									<h5></h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content">
+									<form action="#" method="POST" id="tip_form">
+										<textarea name="add_tip" id="add_tip" placeholder="Enter your tips or suggestions here..."></textarea>
+										<span class="count">140</span>
+										<input type="submit" class="sp_submit">
+									</form>
+								</div>
+							</div>
+						</section>
+
+						<section id="Ssources" data-section-type="list">
+							<div data-front class="front">
+								<header>
+									<h5>Sources</h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content"></div>
+							</div>
+							<div data-back class="back">
+								<header>
+									<h5>Sources</h5>
+									<a href="#" class="trigger"></a>
+								</header>
+								<div class="content">
+									<h5>Select the source who recommend this, or name it</h5>
+									<div class="ui-front">
+										<form action="#" id="source_form">
+											<input type="search" id="add_source" class="nameAutocomplete" placeholder="Name / eMail / Phone">
+										</form>
+										<ul id="sourcesResults" class="ui-autocomplete nameResults"></ul>
+									</div>
+									<div class="container close">
+										<h5>Your sources</h5>
+										<ul class="tag_list">
+										</ul>
+									</div>
+								</div>
+							</div>
+						</section>
+
+						<section id="Sprivacy" class="secondary">
+							<h5>Visibility</h5>
+							<a href="#" class="info"></a>
+							<div class="content">
+								<select name="privacyForm" id="privacyForm">
+									<option value="public">Everyone</option>
+									<option value="network">My network</option>
+									<option value="private">Only me</option>
+								</select>
+							</div>
+						</section>
+
+						<section id="Supdate" class="secondary">
+							<h5>Last update :</h5>
+							<div class="content">
+								<p>04/04/2014 <small>at</small> 17h03</p>
+							</div>
+						</section>
+
+					</section>
+				</section>
+
+				<footer>
+					<ul>
+						<li><a href="#">Recommander</a></li>
+						<li><a href="#">Poster</a></li>
+						<li><a href="#">Signaler contenu inaproprié</a></li>
+						<li><a href="#">Signaler erreur</a></li>
+					</ul>
+				</footer>
+
+			</div>
+
+		</div>
+	</div>
+</body>
+
+</html>
