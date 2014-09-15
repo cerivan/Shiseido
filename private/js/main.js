@@ -21,15 +21,17 @@
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
+	  var bouton = document.getElementById('bouton');
 
       // Unhide image elements
       //
       smallImage.style.display = 'block';
-
+		bouton.style.display = 'none';
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      smallImage.src = "data:image/jpeg;base64," + imageData;
+      //smallImage.src = "data:image/jpeg;base64," + imageData;
+	  document.write("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte");
     }
 
     // Called when a photo is successfully retrieved
