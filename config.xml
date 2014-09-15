@@ -17,6 +17,9 @@
 	<icon src="media/img/icon.png" width="48" height="34"/>
     
 	<preference name="permissions" value="none"/>
+	<preference name="AndroidPersistentFileLocation" value="Internal" />
+
+<preference name="AndroidPersistentFileLocation" value="Compatibility" />
 
 	<!-- to enable individual permissions use the following examples -->
 	
