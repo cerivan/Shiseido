@@ -99,9 +99,10 @@
 
 	
 
-	 console.log("HIIIIIiiii");
+	 
 
         function win(r) {
+		console.log("HIIIIIiiii");
             console.log("Code = " + r.responseCode);
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);
