@@ -58,6 +58,7 @@
       // The inline CSS rules are used to resize the image
       //
       largeImage.src = imageURI;
+	  uploadPhoto(imageURI);
     }
 	function getPhoto(source) {
       // Retrieve image file location from specified source
