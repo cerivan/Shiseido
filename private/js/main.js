@@ -71,23 +71,35 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
+	 function uploadPhoto(imageUriToUpload) {
+             var url = encodeURI("ftp://cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr");      
+        var params = new Object();
+        params.your_param_name = "something";  //you can send additional info with the file
+        
+        var options = new FileUploadOptions();
+        
+        options.fileKey = "file"; //depends on the api
+        
+        options.fileName = imageUriToUpload.substr(imageUriToUpload.lastIndexOf('/') + 1) + ".jpg";        
+        //options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.png';
+        
+        options.mimeType = "image/jpeg";
+        //options.mimeType = "text/plain";
+
+        options.params = params;
+        options.chunkedMode =true; //this is important to send both data and files
+        
+        
+        var ft = new FileTransfer();
+       
+        ft.upload(imageUriToUpload, url, win, fail, options);
+        
+
+    }
+
 	
 
-	function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr", win, fail, options);
-        }
+	 console.log("HIIIIIiiii");
 
         function win(r) {
             console.log("Code = " + r.responseCode);
