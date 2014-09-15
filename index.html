@@ -26,6 +26,11 @@
 			<div class="envoyer" onclick="capturePhoto();" >Envoyer une preuve d'achat <span>></span></div>
 			<div class="retrouver">Retrouver un magazin<span>></span></div>
 			<div class="profil">Profil<span>></span></div>
+			<button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
+			<button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
+			<button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
+			<img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
+			<img style="display:none;" id="largeImage" src="" />
 			
 		</div>
 		
