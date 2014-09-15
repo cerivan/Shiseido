@@ -32,8 +32,7 @@
 
       // Unhide image elements
       
-      //smallImage.style.display = 'block';
-		bouton1.style.display = 'none';
+		smallImage.style.display = 'block';		
 		message.style.display = 'block';
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
