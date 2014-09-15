@@ -22,66 +22,47 @@
       //
       var smallImage = document.getElementById('smallImage');
 	  var bouton1 = document.getElementById('bouton1');
+	  var message = document.getElementById('message');
 
       // Unhide image elements
       
       smallImage.style.display = 'block';
-		bouton1.style.display = 'none';
+				bouton1.style.display = 'none';
+		message.style.display = 'block';
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      //smallImage.src = "data:image/jpeg;base64," + imageData;
-	  document.getElementById('message').style.display = 'block';
-	  document.getElementById('message').innerHTML("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte");
+      smallImage.src = "data:image/jpeg;base64," + imageData;
+	  
+	  message.innerHTML("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte"); 
     }
+	
+	function uploadFromGallery() {
+ 
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 100,
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                );
+ 
+}
+ 
+function uploadPhoto(imageURI) {
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.png';
+    options.mimeType="text/plain";
+ 
+    var params = new Object();
+ 
+    options.params = params;
+ 
+    var ft = new FileTransfer();
+    ft.upload(imageURI, encodeURI("cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr"), win, fail, options);
+}
 
-    // Called when a photo is successfully retrieved
-    //
-    function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI
-      // console.log(imageURI);
-
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-
-      // Show the captured photo
-      // The in-line CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-    }
-
-    // A button will call this function
-    //
-    function capturePhoto() {
-      // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
-        destinationType: navigator.camera.DestinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
-    function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-      destinationType: navigator.camera.DestinationType.DATA_URL });
-    }
-
-    // A button will call this function
-    //
-    function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: navigator.camera.destinationType.FILE_URI,
-        sourceType: source });
-    }
-
-    // Called if something bad happens.
-    //
     function onFail(message) {
       alert('Failed because: ' + message);
     }
