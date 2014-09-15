@@ -16,17 +16,13 @@
       navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
-	 function capturePhotoEdit() {
-      // Take picture using device camera, allow edit, and retrieve image as base64-encoded string  
-      navigator.camera.getPicture(onPhotoDataSuccess, onFail, { quality: 20, allowEdit: true,
-        destinationType: navigator.camera.DestinationType.DATA_URL });
-    }
+	 
 
     // Called when a photo is successfully retrieved
     //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
-       console.log(imageData);
+       //console.log(imageData);
 
       // Get image handle
       //
@@ -42,95 +38,54 @@
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
-      //smallImage.src = "data:image/jpeg;base64," + imageData;
-	  
-	  message.innerHTML = "Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte";
-     uploadPhoto(imageData);	  
+      smallImage.src = "data:image/jpeg;base64," + imageData;	  
+	  message.innerHTML = "Votre preuve d'achat a bien été envoyé <br> vous serez prévenez par SMS de sa prise en compte";
+     	  
     }
-	function onPhotoURISuccess(imageURI) {
-      // Uncomment to view the image file URI 
-       console.log(imageURI);
-
-      // Get image handle
-      //
-      var largeImage = document.getElementById('largeImage');
-
-      // Unhide image elements
-      //
-      largeImage.style.display = 'block';
-
-      // Show the captured photo
-      // The inline CSS rules are used to resize the image
-      //
-      largeImage.src = imageURI;
-	  uploadPhoto(imageURI);
-    }
-	function getPhoto(source) {
-      // Retrieve image file location from specified source
-      navigator.camera.getPicture(onPhotoURISuccess, onFail, { quality: 50,
-        destinationType: destinationType.FILE_URI,
-        sourceType: source });
-    }
-	 function uploadPhoto(imageUriToUpload) {
-             var url = encodeURI("ftp://cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr");      
-        var params = new Object();
-        params.your_param_name = "something";  //you can send additional info with the file
-        
-        var options = new FileUploadOptions();
-        
-        options.fileKey = "file"; //depends on the api
-        
-        options.fileName = imageUriToUpload.substr(imageUriToUpload.lastIndexOf('/') + 1);      
-        //options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.png';
-        
-        options.mimeType = "image/jpeg";
-        //options.mimeType = "text/plain";
-
-        options.params = params;
-        //options.chunkedMode =true; //this is important to send both data and files
-        
-        
-        var ft = new FileTransfer();
-       
-        ft.upload(imageUriToUpload, url, win, fail, options);
-        options.chunkedMode = false;
-		options.headers = {
-		Connection: "close"
-		};
-
-    }
-
-	
-
-	 
-
+	function getImage() {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+			alert('get picture failed');
+		},{
+			quality: 50, 
+			destinationType: navigator.camera.DestinationType.FILE_URI,
+			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		}
+            );
+ 
+        }
+ 
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "ftp://cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr", win, fail, options);
+        }
+ 
         function win(r) {
-		console.log("HIIIIIiiii");
             console.log("Code = " + r.responseCode);
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);
+            alert(r.response);
         }
-
+ 
         function fail(error) {
             alert("An error has occurred: Code = " = error.code);
         }
-   
-
-    function onFail(message) {
-      alert('Failed because: ' + message);
-    }
-	function uploadupload() {
-
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto,
-                                        function(message) { alert('get picture failed'); },
-                                        { quality: 50, 
-                                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-                                        );
-
-        }
-
+ 
+	
+	 
+	
   /*   </script>
   </head>
   <body>
