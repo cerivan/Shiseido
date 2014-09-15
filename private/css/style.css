@@ -1,0 +1,47 @@
+@media (max-width: 640px) {
+    * {
+        -webkit-box-sizing: border-box;
+           -moz-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+    
+    /* passer body (et tous les éléments de largeur fixe) en largeur automatique */
+
+    body {
+        width: auto;
+        margin: 0;
+        padding: 0;
+    }
+	
+	.titre {
+		background-image: url("../../media/img/shi.png");
+		background-repeat: no-repeat;
+		background-size: 124px 20px;
+		background-position: center center;
+		background-color: #9E1B34;
+		//width: 700px;
+  height: 70px;
+	}
+	.logo {
+		background-image: url("../../media/img/beau.png");
+		background-size: 384px 320px;
+		background-repeat: no-repeat;
+		background-position: center center;
+		
+//width: 700px;
+  height: 300px;
+	}
+	
+	.envoyer, .retrouver, .profil {
+		background-color: #f0ede8;
+		border: 1px solid #a1a1a1;
+		line-height:80px;
+		font-size: 17px;
+		padding-left:20px;
+		//width: 700px;
+  height: 90px;
+	}
+	.bouton span{
+	float: right;
+	padding-right:10px;
+	font-size: 25px;}
