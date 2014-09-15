@@ -39,7 +39,7 @@
 	<gap:plugin name="org.apache.cordova.core.network-information" /> 
 	<gap:plugin name="org.apache.cordova.camera" />
     
-	<gap:plugin name="Media" value="org.apache.cordova.core.AudioHandler" />
+	
 	<gap:plugin name="Capture" value="org.apache.cordova.core.Capture" />
 	
 	<gap:plugin name="org.apache.cordova.core.file" />
