@@ -26,7 +26,7 @@
     //
     function onPhotoDataSuccess(imageData) {
       // Uncomment to view the base64-encoded image data
-      // console.log(imageData);
+       console.log(imageData);
 
       // Get image handle
       //
@@ -45,11 +45,11 @@
       //smallImage.src = "data:image/jpeg;base64," + imageData;
 	  
 	  message.innerHTML = "Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte";
-     uploadPhoto();	  
+     uploadPhoto(imageData);	  
     }
 	function onPhotoURISuccess(imageURI) {
       // Uncomment to view the image file URI 
-      // console.log(imageURI);
+       console.log(imageURI);
 
       // Get image handle
       //
@@ -80,7 +80,7 @@
         
         options.fileKey = "file"; //depends on the api
         
-        options.fileName = imageUriToUpload.substr(imageUriToUpload.lastIndexOf('/') + 1) + ".jpg";        
+        options.fileName = imageUriToUpload.substr(imageUriToUpload.lastIndexOf('/') + 1);      
         //options.fileName = imageURI.substr(imageURI.lastIndexOf('/') + 1) + '.png';
         
         options.mimeType = "image/jpeg";
@@ -93,7 +93,10 @@
         var ft = new FileTransfer();
        
         ft.upload(imageUriToUpload, url, win, fail, options);
-        
+        options.chunkedMode = false;
+		options.headers = {
+		Connection: "close"
+		};
 
     }
 
