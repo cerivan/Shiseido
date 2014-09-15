@@ -87,7 +87,7 @@
         //options.mimeType = "text/plain";
 
         options.params = params;
-        options.chunkedMode =true; //this is important to send both data and files
+        //options.chunkedMode =true; //this is important to send both data and files
         
         
         var ft = new FileTransfer();
