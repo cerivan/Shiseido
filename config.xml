@@ -14,7 +14,7 @@
 		Cerivan
 	</author>
     
-	<icon src="media/img/icon.png" width="48" height="48"/>
+	<icon src="media/img/icon.png" width="48" height="34"/>
     
 	<preference name="permissions" value="none"/>
 
@@ -27,6 +27,9 @@
 	<feature name="http://api.phonegap.com/1.0/network"/>
 	<feature name="http://api.phonegap.com/1.0/notification"/>
 	<feature name="http://api.phonegap.com/1.0/device" />
+	<feature name="Camera">
+    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+</feature>
 	
 	
 	<preference name="load-url-timeout" value="30000" />
