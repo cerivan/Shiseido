@@ -39,8 +39,25 @@
       //
       //smallImage.src = "data:image/jpeg;base64," + imageData;
 	  
-	  //message.innerHTML = "Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte";
-     uploadPhoto();	  
+	  message.innerHTML = "Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte";
+     //uploadPhoto();	  
+    }
+	function onPhotoURISuccess(imageURI) {
+      // Uncomment to view the image file URI 
+      // console.log(imageURI);
+
+      // Get image handle
+      //
+      var largeImage = document.getElementById('largeImage');
+
+      // Unhide image elements
+      //
+      largeImage.style.display = 'block';
+
+      // Show the captured photo
+      // The inline CSS rules are used to resize the image
+      //
+      largeImage.src = imageURI;
     }
 	function getPhoto(source) {
       // Retrieve image file location from specified source
@@ -48,9 +65,7 @@
         destinationType: destinationType.FILE_URI,
         sourceType: source });
     }
-	function onPhotoURISuccess(imageURI) {
-     uploadPhoto(imageURI);
-    }
+	
 
 	function uploadPhoto(imageURI) {
             var options = new FileUploadOptions();
