@@ -1,4 +1,5 @@
-
+	var pictureSource;   // picture source
+    var destinationType; // sets the format of returned value
 
     // Wait for device API libraries to load
     //
@@ -6,48 +7,65 @@
 
     // device APIs are available
     //
-    
+    function onDeviceReady() {
+        pictureSource=navigator.camera.PictureSourceType;
+        destinationType=navigator.camera.DestinationType;
+    }
 
-	function onDeviceReady() {
+    // Called when a photo is successfully retrieved
+    //
+    function onPhotoDataSuccess(imageData) {
+      // Uncomment to view the base64-encoded image data
+      // console.log(imageData);
 
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto,
-                                        function(message) { alert('get picture failed'); },
-                                        { quality: 50, 
-                                        destinationType: navigator.camera.DestinationType.FILE_URI,
-                                        sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
-                                        );
+      // Get image handle
+      //
+      var smallImage = document.getElementById('smallImage');
+	  var bouton1 = document.getElementById('bouton1');
+	  var message = document.getElementById('message');
 
-        }
+      // Unhide image elements
+      
+      //smallImage.style.display = 'block';
+		bouton1.style.display = 'none';
+		message.style.display = 'block';
+      // Show the captured photo
+      // The in-line CSS rules are used to resize the image
+      //
+      //smallImage.src = "data:image/jpeg;base64," + imageData;
+	  
+	  message.innerHTML("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte"); 
+    }
+	
+	/* function uploadFromGallery() {
+ 
+    // Retrieve image file location from specified source
+    navigator.camera.getPicture(uploadPhoto,
+                                function(message) { alert('get picture failed'); },
+                                { quality: 100,
+                                destinationType: navigator.camera.DestinationType.FILE_URI,
+                                sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY }
+                                );
+ 
+}
+ 
+function uploadPhoto(imageURI) {
+    var options = new FileUploadOptions();
+    options.fileKey="file";
+    options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1)+'.png';
+    options.mimeType="text/plain";
+ 
+    var params = new Object();
+ 
+    options.params = params;
+ 
+    var ft = new FileTransfer();
+    ft.upload(imageURI, encodeURI("cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr"), win, fail, options);
+} */
 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
-
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
-
-            options.params = params;
-
-            var ft = new FileTransfer();
-            ft.upload(imageURI, encodeURI("cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr"), win, fail, options);
-        }
-
-        function win(r) {
-            console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);
-        }
-
-        function fail(error) {
-            alert("An error has occurred: Code = " = error.code);
-        }
-
-  
-
+    function onFail(message) {
+      alert('Failed because: ' + message);
+    }
 
   /*   </script>
   </head>
