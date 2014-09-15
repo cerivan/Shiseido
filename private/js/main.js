@@ -40,7 +40,7 @@
       //smallImage.src = "data:image/jpeg;base64," + imageData;
 	  
 	  //message.innerHTML = "Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte";
-     uploadPhoto(imageURI);	  
+     uploadPhoto();	  
     }
 	function getPhoto(source) {
       // Retrieve image file location from specified source
