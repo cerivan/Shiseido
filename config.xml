@@ -43,9 +43,7 @@
     <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
 </feature>
 	
-	<uses-permission android:name="android.permission.INTERNET" />
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-<uses-permission android:name="android.permission.READ_PHONE_STATE" />
+	
 	
 	<preference name="load-url-timeout" value="30000" />
 
