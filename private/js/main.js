@@ -21,7 +21,7 @@
       // Get image handle
       //
       var smallImage = document.getElementById('smallImage');
-	  var bouton = document.getElementById('bouton');
+	  var bouton = document.getElementsByClass('bouton');
 
       // Unhide image elements
       //
