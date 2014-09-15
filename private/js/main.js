@@ -24,14 +24,14 @@
 	  var bouton1 = document.getElementById('bouton1');
 
       // Unhide image elements
-      //
+      
       smallImage.style.display = 'block';
 		bouton1.style.display = 'none';
       // Show the captured photo
       // The in-line CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;
-	  document.getElementsById('message').innerHTML("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte");
+	  document.getElementById('message').innerHTML("Votre preuve d'achat a bien été envoyer <br> vous serez prévener par SMS de sa prise en compte");
     }
 
     // Called when a photo is successfully retrieved
