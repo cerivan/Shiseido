@@ -70,7 +70,7 @@
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "ftp://cerivanmutu2_shiseido:superdragon43@ftp-turbo.celeonet.fr", win, fail, options);
+            ft.upload(imageURI, "http://ceri.es/app/post.php?truc=machin", win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
         }
  
