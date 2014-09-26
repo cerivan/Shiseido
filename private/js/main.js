@@ -70,9 +70,10 @@
             options.mimeType="image/jpeg";
  
             var params = new Object();
+            
+            params.value1 = "test";
+            params.value2 = "param";
             options.params = params;
-	    params.user_id =userID;
-	    params.group_id=groupId;
      
      	    var url=encodeURI("http://ceri.es/app/post.php?truc=machin");
             var ft = new FileTransfer();
