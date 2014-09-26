@@ -31,8 +31,7 @@
 	<feature name="http://api.phonegap.com/1.0/notification"/>
 	<feature name="http://api.phonegap.com/1.0/device" />
 	<feature name="http://api.phonegap.com/1.0/storage"/>
-	<feature name="http://api.phonegap.com/1.0/file" /> 
-	<feature name="http://api.phonegap.com/1.0/file" />
+	
 <feature name="File">
        <param name="android-package" value="org.apache.cordova.file.FileUtils" />
 </feature>
