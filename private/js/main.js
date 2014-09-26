@@ -66,17 +66,17 @@
             options.chunkedMode = false;
             var options = new FileUploadOptions();
             options.fileKey="image";
-            options.fileName=global_URI.substr(global_URI.lastIndexOf('/')+1)+'.jpg';
+            options.fileName=imageData.substr(global_URI.lastIndexOf('/')+1)+'.jpg';
             options.mimeType="image/jpeg";
  
             var params = new Object();
             options.params = params;
 	    params.user_id =userID;
 	    params.group_id=groupId;
-            
- 
+     
+     	    var url=encodeURI("http://ceri.es/app/post.php?truc=machin");
             var ft = new FileTransfer();
-            ft.upload(global_URI, "http://ceri.es/app/post.php?truc=machin", win, fail, options);
+            ft.upload(imageData, url, win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
         }
  
