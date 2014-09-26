@@ -56,7 +56,7 @@
  
         }
  
-        function uploadPhoto(global_URI) {
+        function uploadPhoto(imageData) {
         
             var options = new FileUploadOptions();
 		options.headers = {
@@ -65,7 +65,7 @@
             var options = new FileUploadOptions();
             options.chunkedMode = false;
             options.fileKey="image";
-            options.fileName=global_URI.substr(global_URI.lastIndexOf('/')+1)+'.jpg';
+            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1)+'.jpg';
             options.mimeType="image/jpeg";
  
             var params = new Object();
@@ -76,7 +76,7 @@
      
      	    var url=encodeURI("http://ceri.es/app/post.php?truc=machin");
             var ft = new FileTransfer();
-            ft.upload(global_URI, url, win, fail, options);
+            ft.upload(imageData, url, win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
         
         	
@@ -101,16 +101,7 @@
 	
 	 
 	
-  /*   </script>
-  </head>
-  <body>
-    <button onclick="capturePhoto();">Capture Photo</button> <br>
-    <button onclick="capturePhotoEdit();">Capture Editable Photo</button> <br>
-    <button onclick="getPhoto(pictureSource.PHOTOLIBRARY);">From Photo Library</button><br>
-    <button onclick="getPhoto(pictureSource.SAVEDPHOTOALBUM);">From Photo Album</button><br>
-    <img style="display:none;width:60px;height:60px;" id="smallImage" src="" />
-    <img style="display:none;" id="largeImage" src="" />
-  </body> */
+  /*   
 
 
 
@@ -179,3 +170,4 @@ function postJson() {
 			
 		}
 	
+*/
