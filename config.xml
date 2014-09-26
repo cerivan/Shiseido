@@ -46,6 +46,9 @@
     <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
 </feature>
 	
+	<feature name="Camera">
+		 <param name="ios-package" value="CDVCamera" />
+    	</feature>
 	
 	
 	<preference name="load-url-timeout" value="30000" />
