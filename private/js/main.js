@@ -73,6 +73,8 @@
             params.value1 = "test";
             params.value2 = "param";
             options.params = params;
+			options.chunkedMode = false;
+            alert('transferring...');
      
      	    var url=encodeURI("http://ceri.es/app/post.php");
             var ft = new FileTransfer();
