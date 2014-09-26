@@ -54,11 +54,19 @@
 	<feature name="Camera">
 		 <param name="ios-package" value="CDVCamera" />
     	</feature>
+	<feature name="File">
+   <param name="android-package" value="org.apache.cordova.FileUtils" />
+</feature>
+<feature name="FileTransfer">
+   <param name="android-package" value="org.apache.cordova.FileTransfer" />
+</feature>
 	
 	
 	<preference name="load-url-timeout" value="30000" />
 
 	<gap:splash src="media/img/splash.png" />
+	<gap:plugin name="org.apache.cordova.file"/>
+<gap:plugin name="org.apache.cordova.file-transfer"/>
 
 	<gap:plugin name="org.apache.cordova.core.console" /> 	
 	<gap:plugin name="org.apache.cordova.core.device" />
