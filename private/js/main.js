@@ -79,6 +79,12 @@
             var ft = new FileTransfer();
             ft.upload(imageData, url, win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
+        
+        	
+        	
+        	
+        	var message = document.getElementById('message');
+        	message.innerHTML = "Votre preuve d'achat a bien été envoyé <br> vous serez prévenez par SMS de sa prise en compte";
         }
  
         function win(r) {
