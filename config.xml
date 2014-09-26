@@ -15,6 +15,9 @@
 	</author>
     
 	<icon src="media/img/icon.png" width="48" height="34"/>
+	
+	<preference name="permissions" value="none" />
+	<access origin="*" subdomains="true" />
     
 	
 	<preference name="AndroidPersistentFileLocation" value="Internal" />
@@ -71,7 +74,6 @@
 	
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
-	<access origin="*" />
 
 
 </widget>
