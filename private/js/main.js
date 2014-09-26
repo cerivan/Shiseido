@@ -56,7 +56,7 @@
  
         }
  
-        function uploadPhoto(imageData) {
+        function uploadPhoto(global_URI) {
         
             var options = new FileUploadOptions();
 		options.headers = {
