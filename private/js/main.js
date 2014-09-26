@@ -13,7 +13,7 @@
     }
 	function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(onPhotoDataSuccess, uploadPhoto, onFail, { quality: 50,
+      navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
         destinationType: destinationType.DATA_URL });
     }
 	 function onFail(message) {
@@ -56,7 +56,7 @@
  
         }
  
-        function uploadPhoto(imageURI) {
+        function uploadPhoto(imageData) {
         
             var options = new FileUploadOptions();
 		options.headers = {
@@ -66,7 +66,7 @@
             options.chunkedMode = false;
             var options = new FileUploadOptions();
             options.fileKey="image";
-            options.fileName=imageData.substr(global_URI.lastIndexOf('/')+1)+'.jpg';
+            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1)+'.jpg';
             options.mimeType="image/jpeg";
  
             var params = new Object();
