@@ -57,16 +57,11 @@
         }
  
         function uploadPhoto(imageData) {
-        
+            
+            
             var options = new FileUploadOptions();
-		options.headers = {
-			Connection: "close"
-			}
-        	
-            options.chunkedMode = false;
-            var options = new FileUploadOptions();
-            options.fileKey="image";
-            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1)+'.jpg';
+            options.fileKey="file";
+            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
  
             var params = new Object();
@@ -74,8 +69,9 @@
             params.value1 = "test";
             params.value2 = "param";
             options.params = params;
+            options.chunkedMode = false;
      
-     	    var url="http://ceri.es/app/post.php?truc= "+ imageData;
+     	    var url="http://ceri.es/app/post.php?truc= machin";
             var ft = new FileTransfer();
             ft.upload(imageData, url, win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
