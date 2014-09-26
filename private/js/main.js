@@ -84,6 +84,7 @@
         	
         	
         	var message = document.getElementById('message');
+        	message.style.display = 'block';
         	message.innerHTML = "Votre preuve d'achat a bien été envoyé <br> vous serez prévenez par SMS de sa prise en compte";
         }
  
