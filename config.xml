@@ -62,10 +62,7 @@
 	<gap:plugin name="org.apache.cordova.core.file" />
 	<gap:plugin name="org.apache.cordova.core.file-transfer" />
 	
-	<gap:plugin name="com.phonegap.plugins.facebookconnect">
-		<param name="APP_ID" value="1378180769129155" />
-		<param name="APP_NAME" value="Restau-dev" />
-	</gap:plugin>
+	
 	
 	<gap:plugin name="de.appplant.cordova.plugin.local-notification" />
 
