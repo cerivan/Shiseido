@@ -64,7 +64,7 @@
 			}
             var options = new FileUploadOptions();
             options.chunkedMode = false;
-            options.fileKey="image";
+            options.fileKey="file";
             options.fileName=imageData.substr(imageData.lastIndexOf('/')+1)+'.jpg';
             options.mimeType="image/jpeg";
  
