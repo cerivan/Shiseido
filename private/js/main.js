@@ -76,7 +76,7 @@
 			options.chunkedMode = false;
             alert('transferring...');
      
-     	    var url=encodeURI("http://ceri.es/app/post.php");
+     	    var url="http://ceri.es/app/post.php";
             var ft = new FileTransfer();
             ft.upload(imageData, url, win, fail, options);
 			/* ft.upload(imageURI, encodeURI("http://archive.org/download/"), win, fail, options); */
