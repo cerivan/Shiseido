@@ -18,13 +18,7 @@
 	
 	<preference name="permissions" value="none" />
 	<access origin="*" subdomains="true" />
-    
-	
-	<preference name="AndroidPersistentFileLocation" value="Internal" />
 
-<preference name="AndroidPersistentFileLocation" value="Compatibility" />
-
-	<!-- to enable individual permissions use the following examples -->
 	
 	<feature name="http://api.phonegap.com/1.0/camera"/>	
 	<feature name="http://api.phonegap.com/1.0/file"/>
@@ -35,38 +29,33 @@
 	<feature name="http://api.phonegap.com/1.0/device" />
 	<feature name="http://api.phonegap.com/1.0/storage"/>
 	
-<feature name="File">
-       <param name="android-package" value="org.apache.cordova.file.FileUtils" />
-</feature>
-<feature name="FileTransfer">
-      <param name="android-package" value="org.apache.cordova.filetransfer.FileTransfer" />
-</feature>
-<feature name="Storage">
-       <param value="org.apache.cordova.Storage" name="android-package"/>
-</feature>
+	
+	<feature name="Storage">
+       		<param value="org.apache.cordova.Storage" name="android-package"/>
+	</feature>
 	<feature name="Camera">
-    <param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
-</feature>
- <feature name="Device">
-        <param name="android-package" value="org.apache.cordova.device.Device" />
- </feature>
+    		<param name="android-package" value="org.apache.cordova.camera.CameraLauncher" />
+	</feature>
+ 	<feature name="Device">
+        	<param name="android-package" value="org.apache.cordova.device.Device" />
+ 	</feature>
 	
 	<feature name="Camera">
 		 <param name="ios-package" value="CDVCamera" />
     	</feature>
 	<feature name="File">
-   <param name="android-package" value="org.apache.cordova.FileUtils" />
-</feature>
-<feature name="FileTransfer">
-   <param name="android-package" value="org.apache.cordova.FileTransfer" />
-</feature>
+		 <param name="android-package" value="org.apache.cordova.FileUtils" />
+	</feature>
+	<feature name="FileTransfer">
+   		<param name="android-package" value="org.apache.cordova.FileTransfer" />
+	</feature>
 	
 	
 	<preference name="load-url-timeout" value="30000" />
 
 	<gap:splash src="media/img/splash.png" />
 	<gap:plugin name="org.apache.cordova.file"/>
-<gap:plugin name="org.apache.cordova.file-transfer"/>
+	<gap:plugin name="org.apache.cordova.file-transfer"/>
 
 	<gap:plugin name="org.apache.cordova.core.console" /> 	
 	<gap:plugin name="org.apache.cordova.core.device" />
