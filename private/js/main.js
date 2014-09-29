@@ -13,7 +13,7 @@
     }
 	function capturePhoto() {
       // Take picture using device camera and retrieve image as base64-encoded string
-      navigator.camera.getPicture(uploadPhoto, onFail, { quality: 50,
+      navigator.camera.getPicture(uploadPhoto, onFail, { quality: 10,
         destinationType: destinationType.FILE_URI });
     }
 	 function onFail(message) {
@@ -48,7 +48,7 @@
             navigator.camera.getPicture(uploadPhoto, function(message) {
 			alert('get picture failed');
 		},{
-			quality: 50, 
+			quality: 10, 
 			destinationType: navigator.camera.DestinationType.FILE_URI,
 			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
 		}
