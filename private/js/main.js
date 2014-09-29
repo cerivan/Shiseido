@@ -65,7 +65,7 @@
             var options = new FileUploadOptions();
             
             options.fileKey="file";
-            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1)+'.jpg';
+            options.fileName=imageData.substr(imageData.lastIndexOf('/')+1);
             options.mimeType="image/jpeg";
  
             var params = new Object();
