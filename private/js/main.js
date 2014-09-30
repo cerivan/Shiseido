@@ -40,8 +40,7 @@
       // The in-line CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;	  
-	  message.innerHTML = "Votre preuve d'achat a bien été envoyée. <br> Vous serez prévenu par SMS de sa prise en compte.";    	
-  
+	  message.innerHTML = "Votre preuve d'achat a bien été envoyée. <br> Vous serez prévenu par SMS de sa prise en compte.";  
     }
 	function getImage() {
             // Retrieve image file location from specified source
