@@ -40,8 +40,8 @@
       // The in-line CSS rules are used to resize the image
       //
       smallImage.src = "data:image/jpeg;base64," + imageData;	  
-	  message.innerHTML = "Votre preuve d'achat a bien été envoyé <br> vous serez prévenez par SMS de sa prise en compte";
-     	  
+	  message.innerHTML = "Votre preuve d'achat a bien été envoyée. <br> Vous serez prévenu par SMS de sa prise en compte.";    	
+  
     }
 	function getImage() {
             // Retrieve image file location from specified source
@@ -74,7 +74,7 @@
             params.value2 = "param";
             options.params = params;
 			options.chunkedMode = false;
-            alert('transferring...');
+            //alert('transferring...');
      
      	    var url="http://ceri.es/app/post.php";
             var ft = new FileTransfer();
@@ -94,7 +94,7 @@
             console.log("Code = " + r.responseCode);
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);
-            alert(r.response);
+            //alert(r.response);
         }
  
         function fail(error) {
